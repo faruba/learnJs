@@ -1,13 +1,8 @@
+const _ = require('lodash');
 module.exports = {
 	sumOfArray(array) {
-		if(array instanceof Array){
-			var sum = 0;
-			for(var index in array){
-				if(typeof array[index] == 'number'){
-					sum += array[index];
-				}
-			}
-			return sum;
+		if(_.isArray(array)){
+			return array.reduce((acc, num) => _.isNumber(num) ? acc + num : acc, 0);
 		}else{
 			throw "not array";
 		}
