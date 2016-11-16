@@ -1,0 +1,29 @@
+{
+  "name": "learn_how_to_program",
+  "version": "1.0.0",
+  "description": "learn how to program",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc -x game-modules/**/ _mocha --compilers js:babel-register --reporter dot --recursive && nyc report --reporter=html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faruba/learnJs.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "faruba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faruba/learnJs/issues"
+  },
+  "homepage": "https://github.com/faruba/learnJs#readme",
+  "dependencies": {
+    "lodash": "^4.17.2",
+    "mocha": "^3.1.2",
+    "nyc": "^9.0.1",
+    "should": "^11.1.1",
+    "babel-core": "*"
+  }
+}
