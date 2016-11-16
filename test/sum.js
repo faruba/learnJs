@@ -9,7 +9,7 @@ describe("sum ", function() {
 		sumOfArray([]).should.eql(0);
 	});
 	it("sum of array with other type should be ignore", function() {
-		sumOfArray([1,'acb', {a:1},2,[2,3]]).should.eql(3);
+		sumOfArray([1,'acb', {a:1},2,[2,3]]).should.eql(8);
 	});
 	it("sum of other type should throw error", function() {
 		(function() {
@@ -18,6 +18,9 @@ describe("sum ", function() {
 	});
 	it("sum of empty array with float and int", function() {
 		sumOfArray([1, 1.5]).should.eql(2.5);
+	});
+	it("nest array", function() {
+		sumOfArray([1,[2,3], [1,[2,[3,[4,5]]]]]).should.eql(21);
 	});
 	
 });
