@@ -1,10 +1,20 @@
 const _ = require('lodash');
-module.exports = {
-	sumOfArray(array) {
-		if(_.isArray(array)){
-			return array.reduce((acc, num) => _.isNumber(num) ? acc + num : acc, 0);
-		}else{
-			throw "not array";
-		}
+function sumOfArray(array) {
+	if(_.isArray(array)){
+		return array.reduce((acc, num) => {
+			if(_.isNumber(num)){
+			       return  acc + num;
+			}else if(_.isArray(num)){
+			       return	acc + sumOfArray(num);
+			}else{
+				return acc;
+			};
+		},0);
+	}else{
+		throw "not array";
 	}
+}
+
+module.exports = {
+	sumOfArray
 };
