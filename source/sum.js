@@ -1,9 +1,15 @@
 module.exports = {
 	sumOfArray(array) {
-		var sum = 0;
-		for(var index in array){
-			sum += array[index];
+		if(array instanceof Array){
+			var sum = 0;
+			for(var index in array){
+				if(typeof array[index] == 'number'){
+					sum += array[index];
+				}
+			}
+			return sum;
+		}else{
+			throw "not array";
 		}
-		return sum;
 	}
 };
