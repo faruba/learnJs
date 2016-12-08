@@ -8,16 +8,28 @@ var mapData = [
 
 
 function moveNorth(){
-	playerPosition.y -= 1;
+	var destPosY = playerPosition.y - 1;
+	if(destPosY >=0 && mapData[destPosY][playerPosition.x]){
+		playerPosition.y = destPosY;
+	}
 }
 function moveSouth(){
-	playerPosition.y += 1;
+	var destPosY = playerPosition.y + 1;
+	if(destPosY <= 3 && mapData[destPosY][playerPosition.x]){
+		playerPosition.y = destPosY;
+	}
 }
 function moveWest(){
-	playerPosition.x -= 1;
+	var destPosX = playerPosition.x - 1;
+	if(destPosX >= 0 && mapData[playerPosition.y][destPosX]){
+		playerPosition.x = destPosX;
+	}
 }
 function moveEast(){
-	playerPosition.x += 1;
+	var destPosX = playerPosition.x + 1;
+	if(destPosX <= 3 && mapData[playerPosition.y][destPosX]){
+		playerPosition.x = destPosX;
+	}
 }
 
 module.exports = {
