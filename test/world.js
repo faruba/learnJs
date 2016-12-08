@@ -9,8 +9,9 @@ it("test move",function(){
 });
 
 describe("should not go out of world", function(){
-	before(function() {
-		playerPosition = {x:1,y:2};
+	beforeEach(function() {
+		playerPosition.x=1;
+		playerPosition.y=2;
 	});
 	it("North",function(){
 		moveNorth();
