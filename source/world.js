@@ -9,3 +9,11 @@ function moveWest(){
 }
 function moveEast(){
 }
+
+module.exports = {
+	moveNorth,
+	moveSouth,
+	moveWest,
+	moveEast,
+	playerPosition
+};
