@@ -1,4 +1,11 @@
 var playerPosition ={x:1, y:2};
+var mapData = [
+	[false, true, false, true],
+	[true,  true, true,  true],
+	[true,  true, true,  true],
+	[false, true, true,  false],
+];
+
 
 function moveNorth(){
 	playerPosition.y -= 1;
