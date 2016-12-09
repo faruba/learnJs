@@ -31,41 +31,17 @@ function canMoveTo(pos){
 		&& mapData[pos.y][pos.x];
 }
 
-function moveNorth(){
-	var pos = getDestination(playerPosition, 'North');
-	if(canMoveTo(pos)){
-		playerPosition.x = pos.x;
-		playerPosition.y = pos.y;
-		//思考为什么 playerPosition = pos 不可以?
-	}
-}
-function moveSouth(){
-	var pos = getDestination(playerPosition, 'South');
-	if(canMoveTo(pos)){
-		playerPosition.x = pos.x;
-		playerPosition.y = pos.y;
-	}
-}
-function moveWest(){
-	var pos = getDestination(playerPosition, 'West');
-	if(canMoveTo(pos)){
-		playerPosition.x = pos.x;
-		playerPosition.y = pos.y;
-	}
-}
-function moveEast(){
-	var pos = getDestination(playerPosition, 'East');
-	if(canMoveTo(pos)){
-		playerPosition.x = pos.x;
-		playerPosition.y = pos.y;
-	}
-}
-
 module.exports = {
-	moveNorth,
-	moveSouth,
-	moveWest,
-	moveEast,
 	playerPosition
 };
+
+["North", "South", "West", "East"].forEach((direction) => {
+	module.exports[`move${direction}`] = function() {
+		var pos = getDestination(playerPosition, direction);
+		if(canMoveTo(pos)){
+			playerPosition.x = pos.x;
+			playerPosition.y = pos.y;
+		}
+	}
+});
 
