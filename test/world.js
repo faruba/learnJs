@@ -30,7 +30,8 @@ describe("test move", function(){
 	});
 	it("move to a tree",function(){
 		moveWest();
+		playerPosition.should.eql({x:0,y:1});
 		moveSouth();
-		playerPosition.should.eql({x:0,y:2});
+		playerPosition.should.eql({x:0,y:1});
 	});
 });
