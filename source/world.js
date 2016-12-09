@@ -45,8 +45,8 @@ function getDestination(currentPos, direction) {
 
 function canMoveTo(pos){
 	return pos.x >=0 && pos.x < width 
-		&& pos.y >=0 && pos.y < height 
-		&& mapData[pos.y][pos.x];
+		&& pos.y >=0 && pos.y < height ;
+		// ????
 }
 
 module.exports = {
@@ -55,7 +55,11 @@ module.exports = {
 
 ["North", "South", "West", "East"].forEach((direction) => {
 	module.exports[`move${direction}`] = function() {
-		
+		 var pos = getDestination(playerPosition, direction);
+		if(canMoveTo(pos)){
+			playerPosition.x = pos.x;
+			playerPosition.y = pos.y;
+		}
 	}
 });
 
