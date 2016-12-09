@@ -7,16 +7,24 @@ var mapData = [
 ];
 const height = mapData.length;
 const width = mapData[0].length;
-const Direction = { N:1,E:2,W:3,S:4 }
+const DirectionOffset = { 
+	North:{x:0,y:-1},
+	South:{x:0,y:1},
+	West:{x:-1,y:0},
+	East:{x:1,y:0},
+};
 
-function getDestination(currentPos, direction) {
-	switch(direction){
-		case Direction.N: return {x:currentPos.x, y:currentPos.y -1};
-		case Direction.S: return {x:currentPos.x, y:currentPos.y +1};
-		case Direction.W: return {x:currentPos.x -1, y:currentPos.y};
-		case Direction.E: return {x:currentPos.x +1, y:currentPos.y};
-	}	
+function move(pos,delta) {
+	return {
+		x:pos.x + delta.x,
+		y:pos.y + delta.y
+	};
 }
+function getDestination(currentPos, direction) {
+	var offset = DirectionOffset[direction];
+	return move(currentPos, offset); 	
+}
+
 function canMoveTo(pos){
 	return pos.x >=0 && pos.x < width 
 		&& pos.y >=0 && pos.y < height 
@@ -24,7 +32,7 @@ function canMoveTo(pos){
 }
 
 function moveNorth(){
-	var pos = getDestination(playerPosition, Direction.N);
+	var pos = getDestination(playerPosition, 'North');
 	if(canMoveTo(pos)){
 		playerPosition.x = pos.x;
 		playerPosition.y = pos.y;
@@ -32,21 +40,21 @@ function moveNorth(){
 	}
 }
 function moveSouth(){
-	var pos = getDestination(playerPosition, Direction.S);
+	var pos = getDestination(playerPosition, 'South');
 	if(canMoveTo(pos)){
 		playerPosition.x = pos.x;
 		playerPosition.y = pos.y;
 	}
 }
 function moveWest(){
-	var pos = getDestination(playerPosition, Direction.W);
+	var pos = getDestination(playerPosition, 'West');
 	if(canMoveTo(pos)){
 		playerPosition.x = pos.x;
 		playerPosition.y = pos.y;
 	}
 }
 function moveEast(){
-	var pos = getDestination(playerPosition, Direction.E);
+	var pos = getDestination(playerPosition, 'East');
 	if(canMoveTo(pos)){
 		playerPosition.x = pos.x;
 		playerPosition.y = pos.y;
